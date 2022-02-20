@@ -85,6 +85,7 @@
             font-size: 25px;
             font-weight: bold;
             text-indent: 50px;
+            float: left;
         }
 
         .ex6_left {
@@ -136,23 +137,26 @@
         }
 
         .main .left, .main .right {
-            /*border:1px solid #FE6464;*/
-            height: 400px;
+            border:1px solid #FE6464;
+            height: 700px;
             text-align: center;
-            /*line-height: 40px;*/
+            line-height: 40px;
             font-size: 30px;
         }
-
+        .main{
+            padding: 20px;
+            display: flex;
+        }
         .left {
-            width: 40%;
-            float: left;
-            /*flex:1*/
+            /*width: 30%;*/
+            /*float: left;*/
+            flex:1
         }
 
         .right {
-            width: 55%;
-            float: right;
-            /*flex:2*/
+            /*width: 60%;*/
+            /*float: right;*/
+            flex:100
 
         }
 
@@ -161,10 +165,10 @@
         }
 
         .main-faculty .left-faculty, .main-faculty .middle_right, .main-faculty .middle_left, .main-faculty .right-faculty {
-            /*border: 1px solid #FE6464;*/
-            height: 400px;
+            border: 1px solid #FE6464;
+            height: 800px;
             text-align: center;
-            /*line-height: 40px;*/
+            line-height: 35px;
             font-size: 30px;
             /*display: flex;*/
         }
@@ -189,13 +193,13 @@
         .middle_left {
             /*width:20%;*/
             /*float:left;*/
-            flex: 1;
+            flex: 3;
         }
 
         .right-faculty {
             /*width:20%;*/
             /*float:right;*/
-            flex: 1
+            flex: 3
 
         }
 
@@ -203,7 +207,13 @@
             clear: both;
         }
 
-        .footer
+        .main-middle {
+            border: 1px solid #FE6464;
+            padding: 20px;
+            display: flex;
+        }
+        .middle{
+            margin: auto;}
     </style>
 </head>
 <body>
@@ -213,7 +223,7 @@
 
 
 <div class="main">
-    <div class="left"><img class=ex3 src="image03.jpg" height="80%"></div>
+    <div class="left"><img class=ex3 src="image03.jpg" height="40%"></div>
 
 
     <div class="right">
@@ -241,20 +251,22 @@
 
 
 <br><br>
-<div>
+<div class="main-middle">
+    <div class="middle">
     <p class="ex4" align="left">
         News
     </p>
-</div>
-<p class="ex6">
-    <span>·Update date: 2022/2/20</span><br><br>
-</p>
-<p class="ex6">
+
+<div class="ex6">
+    ·Update date: 2022/2/20
+</div><br><br>
+<div class="ex6">
     ·2022/1/2 Our CCSVS (round 1) database is available to access, you can feel free to get the questionnaires and data
     by contact us.
 
-</p>
-
+</div>
+</div>
+</div>
 
 
 <p class="ex4" align="left">
@@ -262,7 +274,7 @@
 </p>
 
 <div class="main-faculty">
-    <div class="left-faculty"><img class=ex3faculty src="image04.jpg" height="80%"></div>
+    <div class="left-faculty"><img class=ex3faculty src="image04.jpg" height="40%"></div>
     <div class="middle_left"><a href="https://spa.swufe.edu.cn/info/1158/2271.htm" class="ex8">Prof. Tao
         Chen</a><br><br>
         <div class="ex6" align="left">
@@ -276,7 +288,7 @@
             Email: tomchan44@swufe.edu.cn
         </div>
     </div>
-    <div class="middle_right"><img class=ex3faculty src="image02.jpg" height="80%"></div>
+    <div class="middle_right"><img class=ex3faculty src="image02.jpg" height="30%"></div>
     <div class="right-faculty"><a href="https://dianshili.github.io/" class="ex8">Undergraduate Dianshi Li</a><br><br>
     <div class="ex6" align="left">
         Undergraduate student at School of Statistics at Southwestern University of Finance and Ecnonmics (SWUFE).
@@ -295,7 +307,7 @@
 
 
 <div class="main-faculty">
-    <div class="left-faculty"><img class=ex3faculty src="image05.jpg" height="80%"></div>
+    <div class="left-faculty"><img class=ex3faculty src="image05.jpg" height="30%"></div>
     <div class="middle_left"><a href="https://qinrujv.github.io/" class="ex8">Undergraduate Qinru Jv
         Chen</a><br><br>
         <div class="ex6" align="left">
@@ -310,7 +322,7 @@
             Email:
         </div>
     </div>
-    <div class="middle_right"><img class=ex3faculty src="image06.jpg" height="80%"></div><br>
+    <div class="middle_right"><img class=ex3faculty src="image06.jpg" height="20%"></div><br>
     <div class="right-faculty"><a href="https://mengyuan.github.io/" class="ex8">Undergraduate Meng Yuan</a><br><br>
     <div class="ex6" align="left">
         Undergraduate student at School of XXX at Southwestern University of Finance and Ecnonmics (SWUFE).
