@@ -1,733 +1,559 @@
+<!DOCTYPE html>
 <html>
+
 <head>
-    <title>Dianshi Li's Homepage</title>
-    <style>
-        .ex6_white {
-            font-family: "Times New Roman";
-            color: white;
-            font-size: 25px;
-            font-weight: bold;
-            text-indent: 50px;
-            float: left;
-        }
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-        .ex1 {
-            font-family: Arial;
-            font-size: 50px
-        }
+    <link rel="icon" href="img/icon.ico" type="image/x-icon"/>
+    <title>青科人才实验室</title>
 
-        .ex3 {
-            text-align: center;
-            border-radius: 100%
-        }
+    <link type="text/css" rel="stylesheet" href="css/iconfont.css">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/main.css">
+    <link type="text/css" rel="stylesheet" href="css/system.css">
+    <link type="text/css" rel="stylesheet" href="css/nav.css">
 
-        .ex2 {
-            font-family: 'Times New Roman';
-            font-size: 20px;
-            text-indent: 50px;
-            color: black;
-            font-weight: normal;
-        }
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="js/navJS.js"></script>
 
-        .ex4 {
-            font-family: Arial;
-            color: darkcyan;
-            font-size: 35px;
-            font-weight: bold;
-        }
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: 'get',
+                url: '/getLateNews',
+                cache: false,
+                success: function (resData) {
+                    let resObj = JSON.parse(resData).newsList;
+                    for (let i = 0; i < resObj.length; i++) {
+                        let temp = "#news".concat((i + 1).toString());
+                        $(temp.concat(" .biaoti a")).text(resObj[i].title);
+                        $(temp.concat(" .biaoti a")).attr("href", "/specNews?num=" + resObj[i].newsNo);
+                        $(temp.concat(" .time")).text(resObj[i].date);
+                    }
+                }
+            });
+            $.ajax({
+                type: 'get',
+                url: '/getLatePaper',
+                cache: false,
+                success: function (resData) {
+                    let resObj = JSON.parse(resData).paperList;
+                    for (let i = 0; i < resObj.length; i++) {
+                        let temp = "#paper".concat((i + 1).toString());
+                        $(temp.concat(" .biaoti a")).text(resObj[i].title);
+                        $(temp.concat(" .time")).text(resObj[i].date);
+                    }
+                }
+            });
+            $.ajax({
+                type: 'get',
+                url: '/getLateProject',
+                cache: false,
+                success: function (resData) {
+                    let resObj = JSON.parse(resData).projectList;
+                    for (let i = 0; i < resObj.length; i++) {
+                        let temp = "#project".concat((i + 1).toString());
+                        $(temp.concat(" .biaoti a")).text(resObj[i].title);
+                        $(temp.concat(" .time")).text(resObj[i].date);
+                    }
+                }
+            });
+            $.ajax({
+                type: 'get',
+                url: '/getLateTeacher',
+                cache: false,
+                success: function (resData) {
+                    let resObj = JSON.parse(resData).teacherList;
+                    for (let i = 0; i < resObj.length; i++) {
+                        let temp = "#teacher".concat((i + 1).toString());
+                        $(temp.concat(" .biaoti a")).text(resObj[i].name);
+                        $(temp.concat(" .biaoti a")).attr("href", "/specMember?num=" + resObj[i].teacherNo);
+                    }
+                }
+            });
 
-        .ex5 {
-            font-family: "Times New Roman";
-            color: black;
-            font-size: 20px;
-            font-weight: bold;
-            text-indent: 50px;
-        }
+            // 轮播图
+            var imgCount = 1;
+            $(".arrow_left").click(function next() {
+                var noneId = "#img0" + imgCount.toString();
+                imgCount = imgCount + 1;
+                if (imgCount > 3)
+                    imgCount = 1;
+                var blockId = "#img0" + imgCount.toString();
+                console.log(blockId);
+                console.log(noneId);
+                $(noneId).css("display", "none");
+                $(blockId).css("display", "block");
+            });
+            $(".arrow_right").click(function prev() {
+                var noneId = "#img0" + imgCount.toString();
+                imgCount = imgCount - 1;
+                if (imgCount < 1)
+                    imgCount = 3;
+                var blockId = "#img0" + imgCount.toString();
+                console.log(blockId);
+                console.log(noneId);
+                $(noneId).css("display", "none");
+                $(blockId).css("display", "block");
+            });
 
-        .ex6 {
-            font-family: "Times New Roman";
-            color: black;
-            font-size: 25px;
-            font-weight: bold;
-            text-indent: 50px;
-        }
+            function autoPlay() {
+                setInterval(function () {
+                    var noneId = "#img0" + imgCount.toString();
+                    imgCount = imgCount + 1;
+                    if (imgCount > 3)
+                        imgCount = 1;
+                    var blockId = "#img0" + imgCount.toString();
+                    console.log(blockId);
+                    console.log(noneId);
+                    $(noneId).css("display", "none");
+                    $(blockId).css("display", "block");
+                }, 8000);
+            }
 
-        .ex6_nor {
-            font-family: "Times New Roman";
-            color: black;
-            font-size: 25px;
-            font-weight: normal;
-            text-indent: 50px;
-        }
-
-        .ex7 {
-            font-family: Arial;
-            color: brown;
-            font-size: 30px;
-            font-weight: bold;
-        }
-
-        .ex8 {
-            font-family: Arial;
-            color: royalblue;
-            font-size: 25px;
-            font-weight: bold;
-            text-indent: 24px;
-        }
-
-        .ex9 {
-            font-family: "Times New Roman";
-            color: black;
-            font-size: 23px;
-            font-weight: bold;
-            text-indent: 50px;
-        }
-
-        .ex10 {
-            text-align: center;
-            color: blueviolet;
-            font-size: 25px;
-        }
-
-        .main-middle {
-            /*border: 1px solid #FE6464;*/
-            padding: 20px;
-            display: flex;
-        }
-
-        .middle {
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .footer
-    </style>
+            autoPlay();
+        })
+    </script>
 </head>
 
+<body class="main">
+<!--Start||head-->
+<div class="wrapper header" id="header" style="padding-right:22px">
+    <div class="head">
+        <div class="left">
+            <div class="sitetitle">
+                <img src="img/headImg01.jpg" alt="website_title">
+            </div>
+        </div>
+        <div class="headbg">
+            <img src="img/headImg02.png">
+        </div>
+        <div class="right">
+            <div class="navbox">
+                <div id="wp_nav_w98">
+                    <ul class="wp_nav"
+                        data-nav-config="{drop_v: &#39;down&#39;, drop_w: &#39;right&#39;, dir: &#39;y&#39;, opacity_main: &#39;1&#39;, opacity_sub: &#39;0.8&#39;, dWidth: &#39;0&#39;}">
+                        <li class="nav-item i1 ">
+                            <a href="#" title="中文" target="_self"><span
+                                    class="item-name">中文</span></a><i class="mark" style="opacity: 1;"></i>
+                        </li>
+                        <li class="nav-item i2 ">
+                            <a href="#" title="English"
+                               target="_self"><span class="item-name">English</span></a><i class="mark"
+                                                                                           style="opacity: 1;"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End||head-->
 
-<h1 align="center">Welcome to Dianshi Li's Homepage </h1>
-<hr>
-<p align="center"><a href="https://dianshili.github.io/Chinese/">中文</a>/English</p>
-<div align="center">
-    <img class=ex3 src="image02.jpg" height="30%">
+<!--Start||nav-->
+<div class="wrapper nav" id="nav" style="background-color: rgba(56, 114, 97)">
+    <div class="inner">
+        <!--Start||导航-->
+        <div class="navbar">
+            <div class="navbox">
+                <div id="wp_nav_w1">
+                    <ul class="wp_nav"
+                        data-nav-config="{drop_v: &#39;down&#39;, drop_w: &#39;right&#39;, dir: &#39;y&#39;, opacity_main: &#39;-1&#39;, opacity_sub: &#39;-1&#39;, dWidth: &#39;0&#39;}">
+                        <li class="nav-item i1 " style="background: rgba(0, 0, 0, 0.2);">
+                            <a href="/index" title="首页"
+                               target="_self"><span class="item-name">首页</span></a><i class="mark"></i>
+                        </li>
+
+                        <li class="nav-item i2 " style="background: none;">
+                            <a href="/about" title="研究团队简介"
+                               target="_self"><span class="item-name">关于我们</span></a><i class="mark"></i>
+                        </li>
+
+                        <li class="nav-item i3 " style="background: none;">
+                            <a href="/news" title="新闻动态"
+                               target="_self"><span class="item-name">新闻动态</span></a><i class="mark"></i>
+                        </li>
+
+
+                        <li class="nav-item i5 " style="background: none;">
+                            <a href="/projectw" title="研究项目"
+                               target="_self"><span class="item-name">研究项目</span></a><i class="mark"></i>
+                            <ul class="sub-nav" style="width: 92px; height: 84px; top: 50px; left: 0px; border: 0px;">
+                                <li class="nav-item i5-1 " style="display: block; width: 100%; background: none;">
+                                    <a href="/projectw" title="横向项目"
+                                       target="_self" style="display: block; width: auto;"><span
+                                            class="item-name">横向项目</span></a><i class="mark"></i>
+                                </li>
+                                <li class="nav-item i5-2 " style="display: block; width: 100%; background: none;">
+                                    <a href="/projecth" title="纵向项目"
+                                       target="_self" style="display: block; width: auto;"><span
+                                            class="item-name">纵向项目</span></a><i class="mark"></i>
+
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item i6 " style="background: none;">
+                            <a href="/paper" title="研究成果"
+                               target="_self"><span class="item-name">研究成果</span></a><i class="mark"></i>
+                            <ul class="sub-nav" style="width: 128px; height: 84px; top: 50px; left: 0px; border: 0px;">
+                                <li class="nav-item i6-1 " style="display: block; width: 100%; background: none;">
+                                    <a href="/paper" title="论文"
+                                       target="_self" style="display: block; width: auto;"><span
+                                            class="item-name">论文</span></a><i class="mark"></i>
+                                </li>
+                                <li class="nav-item i6-2 " style="display: block; width: 100%; background: none;">
+                                    <a href="/patent" title="专利"
+                                       target="_self" style="display: block; width: auto;"><span
+                                            class="item-name">专利</span></a><i class="mark"></i>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item i7 " style="background: none;">
+                            <a href="/teacher" title="团队成员"
+                               target="_self"><span class="item-name">团队成员</span></a><i class="mark"></i>
+                        </li>
+                        <li class="nav-item i8 " style="background: none;">
+                            <a href="/contact" title="联系我们"
+                               target="_self"><span class="item-name">联系我们</span></a><i class="mark"></i>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <!--End||导航-->
+    </div>
 </div>
 
-<p class="ex1" align="center">
-    Dianshi Li
-    <br>
-</p>
+<!-- Start||image-->
+<div class="wrapper">
+    <div class="inner">
+        <!-- banner -->
+        <div class="mbanner" id="banner">
+            <div class="container">
+                <img alt="img01"
+                     id="img01"
+                     src="img/bigImg01.jpg"
+                     width="1280px" height="460px"
+                     style="display: block">
+                <img alt="img02"
+                     id="img02"
+                     src="img/bigImg02.jpg"
+                     width="1280px" height="460px"
+                     style="display: none">
+                <img alt="img03"
+                     id="img03"
+                     src="img/bigImg03.jpg"
+                     width="1280px" height="460px"
+                     style="display: none">
+                <a href="javascript:;" class="arrow arrow_left">&lt;</a>
+                <a href="javascript:;" class="arrow arrow_right">&gt;</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end||image -->
 
+<!--End||nav-->
 
-<p class="ex2" align="center">
-    I am now a undergraduate student at Southwestern University
-    of Finance and Ecnonmics.
-    <br>
-    My major is economic statistics.
-    <br>
-    <br>
-    Email:
-    dianshi2000@126.com; 41809053@smail.swufe.edu.cn
-</p>
-<div class="main-middle">
-    <div class="middle">
+<!--Start||content-->
+<div class="wrapper content" id="container">
+    <div class="inner clearfix allCont" style="padding-bottom: 0px;">
 
-
-        <div class="main-middle">
-            <div class="middle">
-                <p class="ex4" align="left">
-                    News
-                </p>
-
-                <div class="ex6_white">
-                    [5] Combining 16S rRNA and Metagenome sequencing Technologies for the differences and correlation
-                    analysis of intestinal flora and cognitive function in MHD patients: A cross-sectional
-                    study.Combining 16S rRNA and Metagenome sequencing Technologies for the differences and correlation
-                    analysis of intestinal flora and cognitive function in MHD patients: A cross-sectional study.
-
+        <!--Start||新闻动态-->
+        <div class="leftCont">
+            <div class="cont">
+                <div class="tt flexStyle">
+                    <div class="tit">
+                        <i class="iconfont icon-weibiaoti555"></i>
+                        <span class="title" frag="标题">
+								新闻动态
+							</span>
+                    </div>
+                    <div class="more_btn" frag="按钮" type="更多">
+                        <a href="/news" class="w11_more"><span
+                                class="more_text" frag="按钮内容">更多&gt;</span></a>
+                    </div>
                 </div>
-                <div class="ex6">
-                    ·Update date: 2022/2/20
-                </div>
-                <br><br>
-                <div class="ex6">
-                    ·2022/1/2 Our CCSVS (round 1) database is available to access, you can feel free to get the
-                    questionnaires and data
-                    by contact us.
+                <div id="wp_news_w11">
+                    <table width="100%" cellspacing="0" cellpadding="0" class="wp_article_list_table">
+                        <tbody>
+                        <tr id="news1">
+                            <td>
+                                <div class="left">
+                                    <p class="point"></p>
+                                    <p class="biaoti"><a
+                                            href="青研工作坊社团正式成立.html"
+                                            target="_self"
+                                            title="新闻示例1">青研工作坊社团正式成立
+                                    </a></p>
+                                </div>
+                                <div class="time">2022-03-03</div>
+                            </td>
+                        </tr>
 
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
+        <!--End||新闻动态-->
 
-
-        <div class="main-middle">
-            <div class="middle">
-                <p class="ex4" align="left">
-                    Research Interests
-                </p>
-
-                <div class="ex6_white">
-                    [5] Combining 16S rRNA and Metagenome sequencing Technologies for the differences and correlation
-                    analysis of intestinal flora and cognitive function in MHD patients: A cross-sectional study.A
-                    cross-sectional study.Combining 16S rRNA and Metagenome sequencing Technologies for the differences
-                    and correlation
-                    analysis of intestinal flora and cognitive function in MHD patients: A cross-sectional study.
-
-                </div>
-
-
-                <div class="ex6">Machine Learning& Deep Learning:
-                    <span class="ex6_nor"> learning with noisy label; self-supervised learning.</span></div>
-
-                <br><br>
-                <div class="ex6">Transfer Learning:
-                    <span class="ex6_nor"> domain adaptation; zero-shot learning, few-shot learning.</span></div>
-                <br><br>
-                <div class="ex6">
-                    <span class="ex6">Computer Vision:</span>
-                    <span class="ex6_nor">image classification; semantic segmentation; medical imaging analysis.</span>
-
-                </div>
-                <br><br>
-                <div class="ex6">
-                    <span class="ex6">Statistics:</span>
-                    <span class="ex6_nor">economic statistics; medical statistics; analysis of time series; data mining; causal inference.</span>
-
-                </div>
-                <br><br>
-                <div class="ex6">
-                    <span class="ex6">Social Sciences:</span>
-                    <span class="ex6_nor">econometrics; higher education.</span>
-
-                </div>
-                <br><br>
-            </div>
-        </div>
-
-        <div class="main-middle">
-            <div class="middle">
-                <p class="ex4" align="left">
-                    Working Papers
-                </p>
-
-                <div class="ex6_white">
-                    [5] Combining 16S rRNA and Metagenome sequencing Technologies for the differences and correlation
-                    analysis of intestinal flora and cognitive function in MHD patients: A cross-sectional
-                    study.Combining 16S rRNA and Metagenome sequencing Technologies for the differences and correlation
-                    analysis of intestinal flora and cognitive function in MHD patients: A cross-sectional study.
-
-                </div>
-
-                <br>
-                <div class="ex6">[1] Who Benefits from the Recommended-postgraduate Economy? --An Explanation Based on
-                    School Reproduction Theory<br>
-                    <br>
-                    <div class="ex6">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Author: <span
-                            class="ex6_nor">Tao Chen, </span>
-                        <span class="ex6">Dianshi Li</span>
-                        <span class="ex6_nor">, Jiali Li, Qinru Jv*</span>
+        <!--Start||项目-->
+        <div class="rightCont">
+            <div class="cont">
+                <div class="tt flexStyle">
+                    <div class="tit">
+                        <i class="iconfont icon-shiyan"></i>
+                        <span class="title">
+								项目
+							</span>
                     </div>
-                    <br>
-                    <div class="ex6">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status: <span class="ex6_nor">Submitted to Research in Educational Development (CSSCI); IF = 5.372, Chinese top journal</span>
+                    <div class="more_btn" frag="按钮" type="更多">
+                        <a href="/projectw" class="w11_more"><span
+                                class="more_text" frag="按钮内容">更多&gt;</span></a>
                     </div>
                 </div>
-                <br>
-                <div class="ex6">[2] Evaluation of College Students' Academic Involution: Index Construction and Model
-                    Application<br>
-                    <br>
-                    <div class="ex6">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Author: <span
-                            class="ex6_nor">Tao Chen, </span>
-                        <span class="ex6">Dianshi Li</span>
-                        <span class="ex6_nor">,Qinru Jv*</span>
-                    </div>
-                    <br>
-                    <div class="ex6">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status: <span class="ex6_nor">Submitted to Open Education Research (CSSCI); IF = 5.372, Chinese top journal</span>
-                    </div>
-                </div>
-                <br>
-                <div class="ex6">[3] Ties or Chains: Can Family Emotional Support Motivate First-Generation College
-                    Students?<br>
-                    <br>
-                    <div class="ex6">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Author: <span
-                            class="ex6_nor">Tao Chen, Qinru Jv</span>
-                        <span class="ex6">Dianshi Li</span>
-
-                    </div>
-                    <br>
-                    <div class="ex6">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status: <span class="ex6_nor">Submitted to Journal of Hebei Normal University(Educational Science) (CSSCI), IF = 1.301.</span>
-                    </div>
-                </div>
-                <br>
-                <div class="ex6">[4] Learning Transferable Image-level Features for Zero-shot Semantic Segmentation.<br>
-                    <br>
-                    <div class="ex6">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Author: <span
-                            class="ex6_nor">Jianyang Zhang, </span>
-                        <span class="ex6">Dianshi Li</span>
-                        <span class="ex6_nor">, Guowu Yang, Fengmao Lv*</span>
-                    </div>
-                    <br>
-                    <div class="ex6">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status: <span class="ex6_nor">Submitted to Signal Processing Letters, IF/JCR 3.109/Q2</span>
-                    </div>
-                </div>
-                <br>
-                <div class="ex6">[5] Combining 16S rRNA and Metagenome sequencing Technologies for the differences and
-                    correlation analysis of intestinal flora and cognitive function in MHD patients: A cross-sectional
-                    study.<br>
-                    <br>
-                    <div class="ex6">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Author: <span
-                            class="ex6_nor">Qiuyi Gao1, </span>
-                        <span class="ex6">Dianshi Li1</span>
-                        <span class="ex6_nor"> Jingwen Xiao, Mingshuai Li, Yue Wang, Yan Kang, Nan Wang*, Hongli Lin* (1 Qiuyi Gao and Dianshi Li are co-first authors of the article)</span>
-                    </div>
-                    <br>
-                    <div class="ex6">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status: <span class="ex6_nor">Submitted to Clinical Kidney Journal, IF/JCR 4.452/Q1</span>
-                    </div>
-                </div>
-                <br>
-                <div class="ex6">[6] Regional differences and influence factors of Online learning: a survey study of
-                    334 colleges and universities during the COVID-19 epidemic.<br>
-                    <br>
-                    <div class="ex6">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Author: <span
-                            class="ex6_nor">Tao Chen </span>
-                        <span class="ex6">Dianshi Li*</span>
-
-                    </div>
-                    <br>
-                    <div class="ex6">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status: <span class="ex6_nor">Submitted to Open Education Research (CSSCI); IF = 5.372, Chinese top journal</span>
-                    </div>
-                </div>
-                <br>
-                <div class="ex6">[7] Online Active Learning Willingness of College Students and Its Influencing Factors:
-                    a survey study of 334 colleges and universities during the COVID-19 epidemic.<br>
-                    <br>
-                    <div class="ex6">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Author: <span
-                            class="ex6_nor">Tao Chen, </span>
-                        <span class="ex6">Dianshi Li*</span>
-                        <span class="ex6_nor">, Huangen Chen</span>
-                    </div>
-                    <br>
-                    <div class="ex6">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status: <span class="ex6_nor"> Submitted to International Journal of Sustainability in High Education, IF/JCR 2.854/Q2</span>
-                    </div>
-                </div>
-                <br>
-
-
-                <br>
-            </div>
-            <br><br>
-
-            <br>
-
-
-        </div>
-        <div class="main-middle">
-            <div class="middle">
-                <div class="ex4" align="left">
-                    Working Project
-                </div>
-                <div class="ex6_white">
-                    [5] Combining 16S rRNA and Metagenome sequencing Technologies for the differences and correlation
-                    analysis of intestinal flora and cognitive function in MHD patients: A cross-sectional
-                    study.Combining 16S rRNA and Metagenome sequencing Technologies for the differences and correlation
-                    analysis of intestinal flora and cognitive function in MHD patients: A cross-sectional study.
-
-                </div>
-                <br>
-                <div class="ex7" align="left">
-                    <br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As a Director
-                </div>
-                <br><br>
-                <div class="ex6">
-                    [1] China College Students' Voice Survey - Second Survey (CCSVS 2022)
-                    <br><br>
-
-                </div>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fellows: <span
-                        class="ex6_nor"> Tao Chen; Qinru Jv</span>
-                </div>
-                <br>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start Date: <span
-                        class="ex6_nor"> 2022/4</span>
-                </div>
-                <br>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funding: <span
-                        class="ex6_nor">By Prof. Tao Chen</span>
-                </div>
-                <br>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Details: <span
-                        class="ex6_nor"><a href="https://dianshili.github.io/CCSVS/"> Project Page</a></span>
-                </div>
-                <br>
-
-
-                <br><br>
-                <div class="ex6">
-                    [2] Intervention Policy research on the academic ability improvement of top-notch innovative talents
-                    in Chengdu-Chongqing "Double First-class" universities -- Based on the perspective of graduate
-                    school experience.
-                    <br><br>
-
-                </div>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fellows: <span
-                        class="ex6_nor"> Tao Chen, Qinru Jv.</span>
-                </div>
-                <br>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start Date: <span
-                        class="ex6_nor"> 2021/08.</span>
-                </div>
-                <br>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funding: <span
-                        class="ex6_nor">National Innovation and Entrepreneurship Training Program (provincial level)</span>
-                </div>
-                <br>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Details: <span
-                        class="ex6_nor"> It will be realeased soon.</span>
-                </div>
-                <br>
-
-
-                <br><br>
-                <div class="ex6">
-                    [3] Would the "Going Up to the Mountains and Down to the Countryside" experience really affect the
-                    decision behavior in the old groups? An empirical study based on CFPS
-                    <br><br>
-
-                </div>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fellows: <span
-                        class="ex6_nor"> Dan Ding, Qinru Jv</span>
-                </div>
-                <br>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start Date: <span
-                        class="ex6_nor"> 2021/08.</span>
-                </div>
-                <br>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funding: <span
-                        class="ex6_nor">National Innovation and Entrepreneurship Training Program (national level)</span>
-                </div>
-                <br>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Details: <span
-                        class="ex6_nor"><a href="https://dianshili.github.io/CCSVS/"> Project Page</a></span>
-                </div>
-                <br><br><br>
-
-
-                <div class="ex6">
-                    [4] China College Students' Voice Survey - First Survey (CCSVS 2021)
-                    <br><br>
-
-                </div>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fellows: <span
-                        class="ex6_nor"> Tao Chen, Qinru Jv</span>
-                </div>
-                <br>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start Date: <span
-                        class="ex6_nor"> 2021/08.</span>
-                </div>
-                <br>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funding: <span
-                        class="ex6_nor">By Prof. Tao Chen</span>
-                </div>
-                <br>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Details: <span
-                        class="ex6_nor"> It will be realeased soon.</span>
-                </div>
-                <br>
-                <br><br>
-
-
-                <div class="ex7" align="left">
-                    <br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As a Participant
-                </div>
-                <br><br><br>
-                <div class="ex6">
-                    [5] New Retail Personalized Value-driven by Omnichannel Big Data
-                    <br><br>
-
-                </div>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fellows: <span
-                        class="ex6_nor"> Dan Ding</span>
-                </div>
-                <br>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start Date: <span
-                        class="ex6_nor"> 2022/01.</span>
-                </div>
-                <br>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funding: <span
-                        class="ex6_nor">The Fundamental Research Funds for the Central Universities</span>
-                </div>
-                <br>
-
-
-                <br><br>
-                <div class="ex6">
-                    [6] Research on organizational model and operation mechanism of top-notch innovative talents
-                    training under the background of "New Liberal Arts"
-                    <br><br>
-
-                </div>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fellows: <span
-                        class="ex6_nor"> Wen Li.</span>
-                </div>
-                <br>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start Date: <span
-                        class="ex6_nor"> 2022/01.</span>
-                </div>
-                <br>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funding: <span
-                        class="ex6_nor">The Fundamental Research Funds for the Central Universities</span>
-                </div>
-                <br>
-
-
-                <br><br>
-                <div class="ex6">
-                    [7] Research on strategies for improving online teaching experience of teachers and students in
-                    colleges and universities -- Based on the analysis of four elements of the education system.
-                    <br><br>
-
-                </div>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fellows: <span
-                        class="ex6_nor"> Tao Chen.</span>
-                </div>
-                <br>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start Date: <span
-                        class="ex6_nor"> 2021/04.</span>
-                </div>
-                <br>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funding: <span
-                        class="ex6_nor">Teacher Teaching Development Project of Southwestern University of Finance and Economics, 2021</span>
-                </div>
-                <br>
-                <br>
-
-
-                <br><br>
-                <div class="ex6">
-                    [8] Top innovative talents training in Chengdu-Chongqing economic circle.
-                    <br><br>
-
-                </div>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fellows: <span
-                        class="ex6_nor"> Tao Chen.</span>
-                </div>
-                <br>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start Date: <span
-                        class="ex6_nor"> 2021/04.</span>
-                </div>
-                <br>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funding: <span
-                        class="ex6_nor">Education Department of Sichuan Province</span>
-                </div>
-                <br>
-                <br>
-
-
-                <br><br>
-                <div class="ex6">
-                    [9] Analysis system ****(secret-related).
-                    <br><br>
-
-                </div>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fellows: <span
-                        class="ex6_nor"> Liang Wu.</span>
-                </div>
-                <br>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start Date: <span
-                        class="ex6_nor"> 2021/11.</span>
-                </div>
-                <br>
-                <div class='ex6'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funding: <span
-                        class="ex6_nor">****</span>
-                </div>
-                <br>
-                <br>
-
-                <div class="main-middle">
-                    <div class="middle">
-                        <p class="ex4" align="left">
-                            Cooperators
-                        </p>
-
-                        <div class="ex8">
-                            <a href="https://fengmaolv.github.io/online-cv/#" class="ex8">Fengmao Lv
-                                (From Octo. 2020)
-                            </a></div>
-                        <div><br>
-                            <div class="ex6">Associate Professor</div>
-                            <br>
-                            <div class="ex6">Research Interests:
-                                <span class="ex6_nor">Machine Learning; Deep Learning; Transfer Learning; Computer Vision.</span>
-                            </div>
-                        </div>
-                        <br><br>
-
-
-                        <div class="ex8">
-                            <a href="https://it.swufe.edu.cn/info/1107/7376.htm" class="ex8">Dan Ding
-                                (From Octo. 2020)
-                            </a></div>
-                        <div><br>
-                            <div class="ex6">Assistant Professor</div>
-                            <br>
-                            <div class="ex6">Research Interests:
-                                <span class="ex6_nor">Complex Network; Big Data Analysis; Businese Analysis; Financial Technology; consumer behavior.</span>
-                            </div>
-                        </div>
-                        <br><br>
-
-
-                        <div class="ex8">
-                            <a href="https://fzyjy.swufe.edu.cn/info/1066/1983.htm" class="ex8">Tao Chen
-                                (From Nov. 2020)
-                            </a></div>
-                        <div><br>
-                            <div class="ex6">Associate Professor</div>
-                            <br>
-                            <div class="ex6">Research Interests:
-                                <span class="ex6_nor"> Higher Education.</span></div>
-                        </div>
-                        <br><br>
-
-
-                        <div class="ex8">
-                            <a href="https://it.swufe.edu.cn/info/1107/7376.htm" class="ex8">Liang Wu
-                                (From Nov. 2021)
-                            </a></div>
-                        <div><br>
-                            <div class="ex6">Associate Professor</div>
-                            <br>
-                            <div class="ex6">Research Interests:
-                                <span class="ex6_nor">System complexity measure; Machine learning theory; Economic finance and hydrology related applications.</span>
-                            </div>
-                        </div>
-                        <br><br>
-
-                        <div class="ex6_white">
-                            [5] Combining 16S rRNA and Metagenome sequencing Technologies for the differences and
-                            correlation
-                            analysis of intestinal flora and cognitive function in MHD patients: A cross-sectional
-                            study.Combining 16S rRNA and Metagenome sequencing Technologies for the differences and
-                            correlation
-                            analysis of intestinal flora and cognitive function in MHD patients: A cross-sectional
-                            study.
-
-                        </div>
-                    </div>
-                </div>
-                <div class="middle">
-                    <p class="ex4" align="left">
-                        My Group
-                    </p>
-                    <div class="ex6_white">
-                        [5] Combining 16S rRNA and Metagenome sequencing Technologies for the differences and
-                        correlationCombining 16S rRNA and Metagenome sequencing Technologies for the differences and
-                        correlation
-                        analysis of intestinal flora and cognitive function in MHD patients: A cross-sectional study.
-                        analysis of intestinal flora and cognitive function in MHD patients: A cross-sectional study.
-
-                    </div>
-                    <br>
-                    <div class="ex8">
-                        <a href="2222" class="ex8">Guanyu Dai
-
-                        </a></div>
-                    <br><br>
-                    <div class="ex6">
-
-                        Postgraduate Student at China Agricultural University
-
-
-                    </div>
-                    <br>
-                    <div class="ex6">
-
-                        Major: Management
-
-
-                    </div>
-                    <br><br>
-
-
-                    <div class="ex8">
-                        <a href="https://qinrujv.github.io/" class="ex8">Qinru Jv
-
-                        </a></div>
-                    <br><br>
-                    <div class="ex6">
-
-                        Undergraduate Student at Southwestern University of Finance and Economics
-
-
-                    </div>
-                    <br>
-                    <div class="ex6">
-
-                        Major: Accountancy&Big Data
-
-
-                    </div>
-
+                <div id="wp_news_w11">
+                    <table width="100%" cellspacing="0" cellpadding="0" class="wp_article_list_table">
+                        <tbody>
+                        <tr id="project1">
+                            <td>
+                                <div class="left">
+                                    <p class="point"></p>
+                                    <p class="biaoti"><a
+                                            href="/projectw"
+                                            target="_self"
+                                            title="新闻示例1">CCSVS第二期
+                                    </a></p>
+                                </div>
+                                <div class="time">2022-03-03</div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
+        <!--End||项目-->
+    </div>
+</div>
+<!--End||content-->
+<div class="wrapper content" id="container">
+    <div class="inner clearfix allCont">
 
+        <!--Start||论文-->
+        <div class="leftCont">
+            <div class="cont">
+                <div class="tt flexStyle">
+                    <div class="tit">
+                        <i class="iconfont icon-shiyanhuaxue"></i>
+                        <span class="title">
+								论文
+							</span>
+                    </div>
+                    <div class="more_btn" frag="按钮" type="更多">
+                        <a href="/paper" class="w11_more"><span
+                                class="more_text" frag="按钮内容">更多&gt;</span></a>
+                    </div>
+                </div>
+                <div id="wp_news_w11">
+                    <table width="100%" cellspacing="0" cellpadding="0" class="wp_article_list_table">
+                        <tbody>
+                        <tr id="paper1">
+                            <td>
+                                <div class="left">
+                                    <p class="point"></p>
+                                    <p class="biaoti"><a
+                                            href="/paper"
+                                            target="_self"
+                                            title="新闻示例1">大学生学业内卷感知评价：指标构建与现状检验
+                                    </a></p>
+                                </div>
+                                <div class="time">2022-03-03</div>
+                            </td>
+                        </tr>
+                        <tr id="paper2">
+                            <td>
+                                <div class="left">
+                                    <p class="point"></p>
+                                    <p class="biaoti"><a
+                                            href="/paper"
+                                            target="_self"
+                                            title="新闻示例2">谁在保研经济中获益？——基于学校再生产理论的分析
+
+                                    </a></p>
+                                </div>
+                                <div class="time">2022-02-28</div>
+                            </td>
+                        </tr>
+                        <tr id="paper3">
+                            <td>
+                                <div class="left">
+                                    <p class="point"></p>
+                                    <p class="biaoti"><a
+                                            href="/paper"
+                                            target="_self"
+                                            title="新闻示例3">
+                                        纽带与桎梏：家庭情感支持与第一代大学生学习投入的激励路径研究
+
+
+                                    </a></p>
+                                </div>
+                                <div class="time">2022-02-19</div>
+                            </td>
+                        </tr>
+                        <tr id="paper4">
+                            <td>
+                                <div class="left">
+                                    <p class="point"></p>
+                                    <p class="biaoti"><a
+                                            href="/paper"
+                                            target="_self"
+                                            title="新闻示例4">我国大学生人格特质培育差异化及影响因素研究
+
+
+                                    </a></p>
+                                </div>
+                                <div class="time">2022-02-17</div>
+                            </td>
+                        </tr>
+                        <tr id="paper5">
+                            <td>
+                                <div class="left">
+                                    <p class="point"></p>
+                                    <p class="biaoti"><a
+                                            href="/paper"
+                                            target="_self"
+                                            title="新闻示例5">第一代大学生与知识共享 —— 基于不确定管理理论解释
+                                    </a></p>
+                                </div>
+                                <div class="time">2022-02-03</div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--End||论文-->
+
+        <!--Start||成员-->
+        <div class="rightCont">
+            <div class="cont">
+                <div class="tt flexStyle">
+                    <div class="tit">
+                        <i class="iconfont icon-youjiantou"></i>
+                        <span class="title">
+								成员
+							</span>
+                    </div>
+                    <div class="more_btn" frag="按钮" type="更多">
+                        <a href="/teacher" class="w11_more"><span
+                                class="more_text" frag="按钮内容">更多&gt;</span></a>
+                    </div>
+                </div>
+                <div id="wp_news_w11">
+                    <table width="100%" cellspacing="0" cellpadding="0" class="wp_article_list_table">
+                        <tbody>
+                        <tr id="teacher1">
+                            <td>
+                                <div class="left">
+                                    <p class="point"></p>
+                                    <p class="biaoti"><a
+                                            href="/teacher"
+                                            target="_self">陈涛 副教授 博士生导师
+                                    </a></p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="teacher2">
+                            <td>
+
+                                <div class="left">
+                                    <p class="point"></p>
+                                    <p class="biaoti"><a
+                                            href="/teacher"
+                                            target="_self">李点石 研究助理
+                                    </a></p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="teacher3">
+                            <td>
+
+                                <div class="left">
+                                    <p class="point"></p>
+                                    <p class="biaoti"><a
+                                            href="/teacher"
+                                            target="_self">鞠沁汝 研究助理
+                                    </a></p>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--End||项目-->
 
     </div>
 </div>
 
+<!--Start||footer-->
+<div class="wrapper" style="background-color:#f5f5f5">
+    <div class="inner">
+        <div class="webcontact">
+            <p>友情链接：</p>
+            <div>
+                <div id="wp_nav_w97">
 
-<p class="ex10">
-    This page was designed by Dianshi Li.<br>
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span id="busuanzi_container_site_pv">You are the <span id="busuanzi_value_site_pv"></span>th visitor</span>
-</p>
+                    <ul class="wp_nav"
+                        data-nav-config="{drop_v: &#39;down&#39;, drop_w: &#39;right&#39;, dir: &#39;y&#39;, opacity_main: &#39;1&#39;, opacity_sub: &#39;0.8&#39;, dWidth: &#39;0&#39;}">
 
+                        <li class="nav-item i1 ">
+                            <a href="https://www.swufe.edu.cn/" title="西南财经大学"
+                               target="_self"><span class="item-name">西南财经大学</span></a><i class="mark"
+                                                                                          style="opacity: 1;"></i>
+                        </li>
+                        <li>/</li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper footer" id="footer" style="background-color:rgba(56, 114, 97)">
+    <div class="inner">
+        <div class="foot">
+            <div>
+                <div id="wp_news_w09">
+                    <table width="100%" cellspacing="0" cellpadding="0" class="wp_article_list_table">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div>通讯地址：西南财经大学xxxx</div>
+                                <div>办公电话：xxx-xxxxx Email：xxxxx@swufe.edu.cn</div>
+                                <div></div>
+                                <div>Power by singularity v0.1 ©2022</div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End||footer-->
 
 </body>
+
 </html>
