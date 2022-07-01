@@ -2,198 +2,205 @@
 <html>
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="renderer" content="webkit">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	
-	<link rel="icon" href="img/icon.ico" type="image/x-icon"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <link rel="icon" href="img/icon.ico" type="image/x-icon"/>
 
     <title>团队成员</title>
 
     <link type="text/css" rel="stylesheet" href="css/system.css">
-	<link type="text/css" rel="stylesheet" href="css/iconfont.css">
-	<link type="text/css" rel="stylesheet" href="css/style.css">
-	<link type="text/css" rel="stylesheet" href="css/main.css">
-	<link type="text/css" rel="stylesheet" href="css/system.css">
-	<link type="text/css" rel="stylesheet" href="css/nav.css">
+    <link type="text/css" rel="stylesheet" href="css/iconfont.css">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/main.css">
+    <link type="text/css" rel="stylesheet" href="css/system.css">
+    <link type="text/css" rel="stylesheet" href="css/nav.css">
     <link type="text/css" rel="stylesheet" href="css/simplenews.css">
 
-	<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script type="text/javascript" src="js/navJS.js"></script>
-	<script>
-		$(document).ready(function () {
-			var query = window.location.search.substring(1);
-			var vars = query.split("&");
-			var pair = vars[0].split("=");
-			var num = pair[1];
-			$.ajax({
-				type: 'get',
-				url: '/getTeacher/' + num,
-				cache: false,
-				success: function(resData) {
-					let resObj = JSON.parse(resData).teacher;
-					console.log(resObj);
-					$("#teacherImg").attr("src", "img/teacher" + resObj.teacherNo + ".jpg");
-					var name = "<strong>" + resObj.name + "</strong>" +
-							"&nbsp;&nbsp;" + resObj.level;
-					$("#name").append(name);
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="js/navJS.js"></script>
+    <script>
+        $(document).ready(function () {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            var pair = vars[0].split("=");
+            var num = pair[1];
+            $.ajax({
+                type: 'get',
+                url: '/getTeacher/' + num,
+                cache: false,
+                success: function (resData) {
+                    let resObj = JSON.parse(resData).teacher;
+                    console.log(resObj);
+                    $("#teacherImg").attr("src", "img/teacher" + resObj.teacherNo + ".jpg");
+                    var name = "<strong>" + resObj.name + "</strong>" +
+                        "&nbsp;&nbsp;" + resObj.level;
+                    $("#name").append(name);
 
-					var templitIntro = resObj.litIntro.split("_");
-					var litIntro = "";
-					for(let i = 0; i < templitIntro.length; i++)
-						litIntro += templitIntro[i] + "<br>";
-					litIntro += "邮箱：" + resObj.email + "<br>";
-					$("#litIntro").append(litIntro);
-					$("#intro").append("&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;" + resObj.introduction);
-					$("#point").append(resObj.point);
-					$("#edu").append(resObj.education);
-					$("#experience").append(resObj.experience);
-					$("#award").append(resObj.award);
-					$("#research").append(resObj.research);
-				}
-			});
+                    var templitIntro = resObj.litIntro.split("_");
+                    var litIntro = "";
+                    for (let i = 0; i < templitIntro.length; i++)
+                        litIntro += templitIntro[i] + "<br>";
+                    litIntro += "邮箱：" + resObj.email + "<br>";
+                    $("#litIntro").append(litIntro);
+                    $("#intro").append("&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;" + resObj.introduction);
+                    $("#point").append(resObj.point);
+                    $("#edu").append(resObj.education);
+                    $("#experience").append(resObj.experience);
+                    $("#award").append(resObj.award);
+                    $("#research").append(resObj.research);
+                }
+            });
 
-		})
-	</script>
+        })
+    </script>
 </head>
 
 <body>
-	<!--Start||head-->
-	<div class="wrapper header" id="header" style="padding-right:22px">
-		<div class="head">
-			<div class="left">
-				<div class="sitetitle">
-					<img src="img/headImg01.jpg" alt="website_title">
-				</div>
-			</div>
-			<div class="headbg">
-				<img src="img/headImg02.png">
-			</div>
-			<div class="right">
-				<div class="navbox">
-					<div id="wp_nav_w98">
-						<ul class="wp_nav"
-							data-nav-config="{drop_v: &#39;down&#39;, drop_w: &#39;right&#39;, dir: &#39;y&#39;, opacity_main: &#39;1&#39;, opacity_sub: &#39;0.8&#39;, dWidth: &#39;0&#39;}">
-							<li class="nav-item i1 ">
-								<a href="#" title="中文" target="_self"><span
-										class="item-name">中文</span></a><i class="mark" style="opacity: 1;"></i>
+<!--Start||head-->
+<div class="wrapper header" id="header" style="padding-right:22px">
+    <div class="head">
+        <div class="left">
+            <div class="sitetitle">
+                <img src="img/headImg01.jpg" alt="website_title">
+            </div>
+        </div>
+        <div class="headbg">
+            <img src="img/headImg02.png">
+        </div>
+        <div class="right">
+            <div class="navbox">
+                <div id="wp_nav_w98">
+                    <ul class="wp_nav"
+                        data-nav-config="{drop_v: &#39;down&#39;, drop_w: &#39;right&#39;, dir: &#39;y&#39;, opacity_main: &#39;1&#39;, opacity_sub: &#39;0.8&#39;, dWidth: &#39;0&#39;}">
+                        <li class="nav-item i1 ">
+                            <a href="#" title="中文" target="_self"><span
+                                    class="item-name">中文</span></a><i class="mark" style="opacity: 1;"></i>
 
-							</li>
-							<li class="nav-item i2 ">
-								<a href="#" title="English"
-									target="_self"><span class="item-name">English</span></a><i class="mark"
-									style="opacity: 1;"></i>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--End||head-->
+                        </li>
+                        <li class="nav-item i2 ">
+                            <a href="#" title="English"
+                               target="_self"><span class="item-name">English</span></a><i class="mark"
+                                                                                           style="opacity: 1;"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End||head-->
 
-    <!--Start||nav-->
-	<div class="wrapper nav" id="nav" style="background-color: rgba(56, 114, 97)">
-		<div class="inner">
-			<!--Start||导航-->
-			<div class="navbar">
-				<div class="navbox">
-					<div id="wp_nav_w1">
-						<ul class="wp_nav"
-							data-nav-config="{drop_v: &#39;down&#39;, drop_w: &#39;right&#39;, dir: &#39;y&#39;, opacity_main: &#39;-1&#39;, opacity_sub: &#39;-1&#39;, dWidth: &#39;0&#39;}">
-							<li class="nav-item i1 " style="background: none;">
-								<a href="\index" title="首页" target="_self"><span
-										class="item-name">首页</span></a><i class="mark"></i>
-							</li>
+<!--Start||nav-->
+<div class="wrapper nav" id="nav" style="background-color: rgba(56, 114, 97)">
+    <div class="inner">
+        <!--Start||导航-->
+        <div class="navbar">
+            <div class="navbox">
+                <div id="wp_nav_w1">
+                    <ul class="wp_nav"
+                        data-nav-config="{drop_v: &#39;down&#39;, drop_w: &#39;right&#39;, dir: &#39;y&#39;, opacity_main: &#39;-1&#39;, opacity_sub: &#39;-1&#39;, dWidth: &#39;0&#39;}">
+                        <li class="nav-item i1 " style="background: none;">
+                            <a href="\index" title="首页" target="_self"><span
+                                    class="item-name">首页</span></a><i class="mark"></i>
+                        </li>
 
-							<li class="nav-item i2 " style="background: none;">
-								<a href="\about" title="研究团队简介"
-                                   target="_self"><span class="item-name">关于我们</span></a><i class="mark"></i>
-							</li>
+                        <li class="nav-item i2 " style="background: none;">
+                            <a href="\about" title="研究团队简介"
+                               target="_self"><span class="item-name">关于我们</span></a><i class="mark"></i>
+                        </li>
 
-							<li class="nav-item i3 " style="background: none;">
-								<a href="\news" title="新闻动态"
-                                   target="_self"><span class="item-name">新闻动态</span></a><i class="mark"></i>
-							</li>
+                        <li class="nav-item i3 " style="background: none;">
+                            <a href="\news" title="新闻动态"
+                               target="_self"><span class="item-name">新闻动态</span></a><i class="mark"></i>
+                        </li>
 
 
-							<li class="nav-item i5 " style="background: none;">
-								<a href="\projectw" title="研究项目"
-                                   target="_self"><span class="item-name">研究项目</span></a><i class="mark"></i>
-								<ul class="sub-nav" style="width: 92px; height: 84px; top: 50px; left: 0px; border: 0px;"">
-									<li class="nav-item i5-1 " style="display: block; width: 100%; background: none;">
-										<a href="\projectw" title="横向项目"
-                                           target="_self" style="display: block; width: auto;"><span
-												class="item-name">横向项目</span></a><i class="mark"></i>
-									</li>
-									<li class="nav-item i5-2 " style="display: block; width: 100%; background: none;">
-										<a href="\projecth" title="纵向项目"
-                                           target="_self" style="display: block; width: auto;"><span
-												class="item-name">纵向项目</span></a><i class="mark"></i>
+                        <li class="nav-item i5 " style="background: none;">
+                            <a href="\projectw" title="研究项目"
+                               target="_self"><span class="item-name">研究项目</span></a><i class="mark"></i>
+                            <ul class="sub-nav" style="width: 92px; height: 84px; top: 50px; left: 0px; border: 0px;"
+                            ">
+                        <li class="nav-item i5-1 " style="display: block; width: 100%; background: none;">
+                            <a href="\projectw" title="横向项目"
+                               target="_self" style="display: block; width: auto;"><span
+                                    class="item-name">横向项目</span></a><i class="mark"></i>
+                        </li>
+                        <li class="nav-item i5-2 " style="display: block; width: 100%; background: none;">
+                            <a href="\projecth" title="纵向项目"
+                               target="_self" style="display: block; width: auto;"><span
+                                    class="item-name">纵向项目</span></a><i class="mark"></i>
 
-									</li>
-								</ul>
-							</li>
+                        </li>
+                    </ul>
+                    </li>
 
-							<li class="nav-item i6 " style="background: none;">
-								<a href="\paper" title="研究成果"
-                                   target="_self"><span class="item-name">研究成果</span></a><i class="mark"></i>
-								<ul class="sub-nav" style="width: 128px; height: 84px; top: 50px; left: 0px; border: 0px;"">
-									<li class="nav-item i6-1 " style="display: block; width: 100%; background: none;">
-										<a href="\paper" title="论文"
-                                           target="_self" style="display: block; width: auto;"><span
-												class="item-name">论文</span></a><i class="mark"></i>
-									</li>
-									<li class="nav-item i6-2 " style="display: block; width: 100%; background: none;">
-										<a href="\patent" title="专利"
-                                           target="_self" style="display: block; width: auto;"><span
-												class="item-name">专利</span></a><i class="mark"></i>
-									</li>
-								</ul>
-							</li>
+                    <li class="nav-item i6 " style="background: none;">
+                        <a href="\paper" title="研究成果"
+                           target="_self"><span class="item-name">研究成果</span></a><i class="mark"></i>
+                        <ul class="sub-nav" style="width: 128px; height: 84px; top: 50px; left: 0px; border: 0px;"
+                        ">
+                    <li class="nav-item i6-1 " style="display: block; width: 100%; background: none;">
+                        <a href="\paper" title="论文"
+                           target="_self" style="display: block; width: auto;"><span
+                                class="item-name">论文</span></a><i class="mark"></i>
+                    </li>
+                    <li class="nav-item i6-2 " style="display: block; width: 100%; background: none;">
+                        <a href="\patent" title="专利"
+                           target="_self" style="display: block; width: auto;"><span
+                                class="item-name">专利</span></a><i class="mark"></i>
+                    </li>
+                    </ul>
+                    </li>
 
-							<li class="nav-item i7 " style="background: rgba(0, 0, 0, 0.2);">
-								<a href="\teacher" title="团队成员"
-                                   target="_self"><span class="item-name">团队成员</span></a><i class="mark"></i>
-							</li>
+                    <li class="nav-item i7 " style="background: rgba(0, 0, 0, 0.2);">
+                        <a href="\teacher" title="团队成员"
+                           target="_self"><span class="item-name">团队成员</span></a><i class="mark"></i>
+                    </li>
 
-							<li class="nav-item i8 " style="background: none;">
-								<a href="\contact" title="联系我们"
-                                   target="_self"><span class="item-name">联系我们</span></a><i class="mark"></i>
-							</li>
-						</ul>
+                    <li class="nav-item i8 " style="background: none;">
+                        <a href="\contact" title="联系我们"
+                           target="_self"><span class="item-name">联系我们</span></a><i class="mark"></i>
+                    </li>
+                    </ul>
 
-					</div>
-				</div>
-			</div>
-			<!--End||导航-->
-		</div>
-	</div>
+                </div>
+            </div>
+        </div>
+        <!--End||导航-->
+    </div>
+</div>
 
-	<!--End||nav-->
+<!--End||nav-->
 
-    <!--Start||content-->
-    <div class="wrapper" id="container">
-        <div class="inner">
-			<div class="infobox">
-				<div class="article" portletmode="simpleArticleAttri">
-					<div class="entry" style="width: 980px">
-						<div class="read">
-							<div class="wp_articlecontent">
-								<p style="margin-bottom:0in;">
-									<img id="teacherImg" width="128" height="166" style="float:left;padding-right:10px;">
-									<br>
-								</p>
-								<p style="margin-bottom:0in;">
+<!--Start||content-->
+<div class="wrapper" id="container">
+    <div class="inner">
+        <div class="infobox">
+            <div class="article" portletmode="simpleArticleAttri">
+                <div class="entry" style="width: 980px">
+                    <div class="read">
+                        <div class="wp_articlecontent">
+                            <p style="margin-bottom:0in;">
+                                <img src="img/taochen.jpg" width="128" height="166" style="float:left;padding-right:10px;">
+                                <br>
+                            </p>
+                            <p style="margin-bottom:0in;">
 									<span id="name" style="font-family:微软雅黑;font-size:24px;">
-									</span>
-									</span>
-								</p>
-								<p id="litIntro" style="margin-bottom:0in;font-family:微软雅黑;">
+										陈涛<br>
 
-								</p>
-								<h2 class="western"
-									style="background:#ffffff;
+
+									</span>
+                                <span id="name" style="font-family:微软雅黑;font-size:16px;">
+                                    副教授 博士生导师<br><br><br><br>
+                                </span>
+                            </p>
+                            <p id="litIntro" style="margin-bottom:0in;font-family:微软雅黑;">
+
+                            </p>
+                            <h2 class="western"
+                                style="background:#ffffff;
 									       border-top:none;
 										   border-bottom:none;
 										   border-left:8px solid rgba(56, 114, 97);
@@ -205,12 +212,12 @@
 												 font-size:21px">
 										教师简介
 									</span>
-								</h2>
-								<p id="intro" style="line-height:150%;margin-bottom:0in;font-family:微软雅黑;">
-
-								</p>
-								<h2 class="western"
-									style="background:#ffffff;
+                            </h2>
+                            <p id="intro" style="line-height:150%;margin-bottom:0in;font-family:微软雅黑;">
+                                西南财经大学公共管理学院教育管理与政策研究所所长，长聘副教授，博士生导师。中国教育经济学会理事，四川省高等学校教学指导委员会委员，入选四川省学术和技术带头人后备人选和学校光华百人计划。电子科技大学管理科学与工程专业博士后。厦门大学教育研究院与比利时荷语鲁汶大学教育与社会实验室联合培养教育学博士。主要从事教育学与经济学、社会学和管理学等跨学科研究，致力于中国教育改革与内涵发展，长期关注全球与中国高等教育PPPs及公共性问题、全球人才竞争力及战略人才规划。主张“继承理论历史和发展理论”，擅于理论探究、量化分析、案例研究、国际比较等开展研究。
+                            </p>
+                            <h2 class="western"
+                                style="background:#ffffff;
 										   border-top:none;
 									   	   border-bottom:none;
 									       border-left:8px solid rgba(56, 114, 97);
@@ -222,12 +229,16 @@
 											 font-size:21px">
 										研究方向
 									</span>
-								</h2>
-								<p id="point" style="line-height:150%;margin-bottom:0in;font-family:微软雅黑;">
+                            </h2>
+                            <p id="point" style="line-height:150%;margin-bottom:0in;font-family:微软雅黑;">
+                                1.高教社会理论与政策。聚焦教育公共性，涉及高等教育PPPs及公共性问题、教育批判理论（全球教育私营化批判与反思）、高等教育财政与治理；高等教育的社会理论等；
+                                <br>2.人才战略规划与评价。聚焦人才竞争力，涉及基于大数据的区域人才战略及竞争力，世界重要人才中心和创新高地、国家战略人才力量建设，特别是青年科技人才成长，人才外流经济学、产才城校融合发展、高校人才评价等。
+                                <br>3.家校共育与青年成长。聚焦青年价值观，涉及家庭第一代大学生成长与发
+                                展、马克思主义青年文化、当代大学生价值观等；
 
-								</p>
-								<h2 class="western"
-									style="background:#ffffff;
+                            </p>
+                            <h2 class="western"
+                                style="background:#ffffff;
 										   border-top:none;
 									   	   border-bottom:none;
 									       border-left:8px solid rgba(56, 114, 97);
@@ -237,31 +248,17 @@
 									       margin-bottom:0.16in;">
 									<span style="font-weight:normal;
 											 font-size:21px">
-										教育经历
+										任教科目
 									</span>
-								</h2>
-								<p id="edu" style="line-height:150%;margin-bottom:0in;font-family:微软雅黑;">
+                            </h2>
+                            <p id="experience" style="line-height:150%;margin-bottom:0in;font-family:微软雅黑;">
+                                本科：社会学思想与方法
+                                <br>硕士：高等教育学、中级发展经济学
+                                <br>博士：高等教育基本理论、高等教育的社会需求、高等教育经济学、高等教育问题专题与学科前沿
 
-								</p>
-								<h2 class="western"
-									style="background:#ffffff;
-										   border-top:none;
-									   	   border-bottom:none;
-									       border-left:8px solid rgba(56, 114, 97);
-									       border-right:none;line-height:0.31in;
-									       padding:0in 0in 0in 0.19in;
-									       margin-top:0.29in;
-									       margin-bottom:0.16in;">
-									<span style="font-weight:normal;
-											 font-size:21px">
-										职业经历
-									</span>
-								</h2>
-								<p id="experience" style="line-height:150%;margin-bottom:0in;font-family:微软雅黑;">
-
-								</p>
-								<h2 class="western"
-									style="background:#ffffff;
+                            </p>
+                            <h2 class="western"
+                                style="background:#ffffff;
 										   border-top:none;
 									   	   border-bottom:none;
 									       border-left:8px solid rgba(56, 114, 97);
@@ -273,12 +270,16 @@
 											 font-size:21px">
 										荣誉奖励
 									</span>
-								</h2>
-								<p id="award" style="line-height:150%;margin-bottom:0in;font-family:微软雅黑;">
+                            </h2>
+                            <p id="award" style="line-height:150%;margin-bottom:0in;font-family:微软雅黑;">
+                                ［1］2018年11月，第八届钱学森城市学金奖（三项入围奖）（城市教育问题）：《高等教育公私并举与分类管理走势分析》，授予单位：杭州市政府下设杭州国际城市学研究中心
+                                <br>［2］2018年10月，荣获第二届“全国教育实证研究优秀成果评选优秀学术论文奖”——《高等教育公私并举与分类管理走势分析——基于中、法、德三国经验的视角》，排名第一，授予单位：华东师范大学、北京师范大学、全国教育科学规划办和光明日报教育研究中心
+                                <br>［3］2018年9月，荣获“2018年度西南财经大学优秀科研成果奖”——《高等教育公私并举与分类管理走势分析——基于中、法、德三国经验的视角》，排名第一，授予单位：西南财经大学
+                                <br>［4］2016年10月，荣获“第12届高等教育学优秀博士学位论文”——《大学公私界限模糊现象探究》，排名第一，授予单位：中国高等教育学会，该奖项是全国高等教育研究领域同行评议最高荣誉，每年仅评选5篇
 
-								</p>
-								<h2 class="western"
-									style="background:#ffffff;
+                            </p>
+                            <h2 class="western"
+                                style="background:#ffffff;
 										   border-top:none;
 									   	   border-bottom:none;
 									       border-left:8px solid rgba(56, 114, 97);
@@ -290,69 +291,233 @@
 											 font-size:21px">
 										研究成果
 									</span>
-								</h2>
-								<p id="research" style="line-height:150%;margin-bottom:0in;font-family:微软雅黑;">
+                            </h2>
+                            <p id="research" style="line-height:150%;margin-bottom:0in;font-family:微软雅黑;">
+                                <span style="background:#ffffff;font-size: 20px">1.学术论文类</span><br>
+                                <br>[1]陈涛、韩茜.防疫下的全球高等教育治理：影响、经验及中国策略，《复旦教育论坛》2021（6）（CSSCI、中文核心，中文B）
+                                <br>[2]巩阅瑄（学生）、陈涛（通讯作者）、薛海平：爱的边界：家庭教育焦虑是否会增加课外补习投入？《教育发展研究》.2021(15-16) （CSSCI、中文核心，中文A）
+                                <br>[3]陈涛、唐教成、韩茜：中国共产党治理高等教育的百年进路及基本逻辑，《重庆高教研究》.2021（4）（CSSCI扩展、中文核心，中文C）
+                                <br>[4]陈涛、白中英：我国博士生“申请—考核”制改革的反思与重构，《高校教育管理》.2021（1）：29-37（CSSCI，中文C，《高等教育学校文科学术文摘》2021（3）全文转载）
+                                <br>[4]陈涛、蒲岳、巩阅瑄：数字技术对大学生在线学习效果的影响，《教育发展研究》.2020（11）：60-68 (CSSCI，中文A)
+                                <br>[5]陈涛、巩阅瑄、蒲岳：探寻社会化意义：大学生在线教学交互及其对学习效果的影响——基于334所高校在线教学的调查，《高等教育研究》.2020（6）：72-81(CSSCI，中文A)
+                                <br>[6]陈涛、邓圆：外部依赖与内部整合：英国学科评估改革的工作逻辑及发展轨迹——兼论中英两国学科评估的异同，《外国教育研究》.2020（9）（CSSCI，中文C）
+                                <br>[7]陈涛、唐教成：高等教育如何推动成渝地区双城经济圈发展——高等教育集群建设的基础、目标与路径，《重庆高教研究》.2020（4）：40-57（CSSCI扩展版,
+                                中文C）
+                                <br>[8]陈涛、巩阅瑄、李丁：中国家庭文化价值观与影子教育选择——基于霍夫斯泰德文化维度的分析视角，《北京大学教育评论》.2019（3）：164-186（CSSCI，学科权威，中文A）
+                                <br>[9]陈涛、韩茜：四螺旋创新集群：研究型大学人工智能发展生态重构与路向探究——以加拿大多伦多大学为例，《重庆高教研究》，
+                                2020（2）：48-61，CSSCI扩展，中文C）
+                                <br>[10]陈涛、邓圆：技术如何引领学习——美国密涅瓦大学推行主动式学习策略及启示，《开放教育研究》.2018（4）：53-62（CSSCI，学科权威，中文A）
+                                <br>[11]陈涛：把握高等教育混合所有制办学的教育性，《中国高等教育》.2018（15/16）：19-20（CSSCI，中文B）
+                                <br>[12]陈涛、邓圆：英国何以让高校教学更卓越——追踪教学卓越与学生成果框架（TEF）的成效、反思与改进，《教育科学》.2018（2）：88-96（CSSCI，中文B）
+                                <br>[13]陈涛、邵云飞.理念与现实：我国高等工程教育加入《华盛顿协议》后的发展趋向探析，《高校教育管理》.2018（1）：56-62（CSSCI，中文C）
+                                <br>[14]陈涛、邬大光：高等教育公私并举与分类管理走势分析——基于中、法、德三国经验的视角，《教育研究》.2017（07）：79-91（CSSCI，学科顶尖，中文顶A）
+                                <br>[15]陈涛、邵云飞：复合型人才联合培养机制的欧洲策略及其经验，《现代教育管理》.2017（3）：123-128（CSSCI扩展版）
+                                <br>[16]陈涛：大学本质属性探源——基于三所欧洲中世纪大学的分析，《高等教育研究》.2016（10）：1-9（CSSCI，学科权威，中文A）；（全文转载：《新华文摘（数字版）》，2017.09）
+                                <br>[17]陈涛：大学公私界限日益模糊：全球现象与动态特征，《复旦教育论坛》.2015（4）：9-15（CSSCI，中文B）（全文转载：人大复印资料《高等教育》2015.12）
+                                <br>[18]陈涛：一种全新的尝试：高等教育质量测评的国际动向——OECD高等教育学习成果测评(AHELO)的设计与实施，《比较教育研究》.2015（2）:30-37（CSSCI，学科权威，中文A）
+                                <br><br>
+                                <br><span style="background:#ffffff;font-size: 20px">2.智库研究类</span><br>
+                                <br>[1]陈涛、王思懿、吴戈、陈小满：《成渝地区双城经济圈：建设科技创新中心》，毛中根等：《中国西部开发开放报告2021：成渝地区双城经济圈建设》，北京：科学出版社，2021
+                                <br>[2]王辉耀、陈涛（副主编）：《四川人才发展报告2020》，北京：社科文献出版社，2020（总报告：王辉耀、陈涛、吴戈、陈小满、钟绍卓：打造区域增长第四极：构建跨区域人才协同战略新发展格局
+                                促进成渝地区双城经济圈高质量发展）
+                                <br>[3]王辉耀、陈涛（副主编）：《四川人才发展报告2019》，北京：社科文献出版社，2019（总报告：王辉耀、陈涛、吴戈：四川人才强省迈入3.0时代：纵深推进现代人才治理体系
+                                引领全域创新开放协调发展）
+                                <br>[4]王辉耀、陈涛（副主编）：《四川人才发展报告2018》，北京：社科文献出版社，2018（总报告：王辉耀、陈涛：全力构筑新时代成都人才集聚培育新体系，建设全面体现新发展理念的国家中心城市）
+                                <br>[5]王辉耀、陈涛：《四川人才发展报告2017》，北京：社科文献出版社，2017（总报告：王辉耀、陈涛：着力构建全面创新人才发展支撑体系，促进四川全面创新改革驱动转型发展；分报告：陈涛、许莹：四川省大学生创新创业现状、问题及对策研究；晏凌、陈涛、牟相：“双一流”建设背景下四川高校海外人才引进机制探究）
+                                <br>[5]陈涛、王思懿：打造创新人才聚集高地，《成都日报》（2021年12月22日第6版）
+                                <br>[6]陈涛：“双减”之下家庭教养如何转型，《成都日报》（2021年9月1日第7版）
+                                <br>[7]陈涛等：直博生制度：如何让“科研小白”尽快上道，《中国科学报》，https://mp.weixin.qq.com/s/9aiRt9BYKp07Z1EU2B3lsw，2021-09-14
+                                <br>[8]陈涛等：微评（中西部高教发展战略支点），《中国科学报》，http://news.sciencenet.cn/sbhtmlnews/2021/4/361758.shtm，2021-04-06
+                                <br>[9]陈涛等：校外培训整顿能否破解减负难题？专家：也需“内部治理”，《21世纪经济报道》，https://m.21jingji.com/article/20210308/herald/5de5591dbe62109e1b7aebe83d3631e8.html，2021-03-08
+                                <br>[10]陈涛、唐教成：高等教育集群式思维：推动成渝区域创新一体化，《成都日报》（2021年1月13日第7版）
+                                <br>[11]陈涛等：如何推动成渝地区高等教育协同发展，《成都日报》（2021年1月13日第7版）
+                                <br>[12]陈涛等：985高校“西学东渐”，中西部高校的无奈与冲动,
+                                《中国新闻周刊》，https://mp.weixin.qq.com/s/vrkpEDIqsrL70Dx1xGvMnw, 2020年9月20日
+                                <br>[13]王辉耀、陈涛、陈小满：主动融入“双循环”齐心唱好“双城记”，《成都日报》（2020年8月5日第6版）
+                                <br>[14]陈涛等：如何协同共建具有全国影响力的科技创新中心，《成都日报》（2020年7月1日第7版）
+                                <br>[15]陈涛、唐教成.针对成渝双城经济圈高校联盟发展提出建议，《每日要情（第94期），2020年5月22日》
+                                <br>[16]陈涛等：校企合作“蜜月”已至？《中国科学报》http://news.sciencenet.cn/htmlnews/2020/5/439665.shtm?from=groupmessage&isappinstalled=0，2020年5月10日
+                                <br>[17]王辉耀、陈涛：其他8座国家中心城市留才策略，《成都日报》（2018年6月6日第7版，节选自《四川人才发展报告2018》）
+                                <br>[18]王辉耀、陈涛：新时代成都人才集聚培育体系建设策略，《成都日报》（2018年5月31日第3版，节选自《四川人才发展报告2018》）
+                                <br>[19]王辉耀、陈涛：加快构筑国际化人才高地，《成都日报》（2018年5月23日第6版）
+                                <br>[20]王辉耀、陈涛：深刻把握“一带一路”机遇，加快建设西部国际门户枢纽城市《成都日报》（2018年3月21日第10版）
+                                <br>[21]陈涛：努力建设服务成都发展的新型高校智库，《成都日报》（2018年2月7日第7版）
+                                <br>[22]王辉耀、陈涛：成都为城市发展贡献新经验，《成都日报》（2017年9月28日第4版）（该文得到成都市委书记范锐平、宣传部部长田蓉的高度评价，《经济观察报》、人民网、央广网、澎湃新闻、新华丝路网等主流媒体对文章进行全文转载）
+                                <br>[23]参编《中国留学发展报告（2020-2021）》《中国国际移民报告蓝皮书（2020）》《中国留学发展报告（2017）》《中国区域国际人才竞争力报告（2017）》
 
-								</p>																								
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-            <div class="clear"></div>
+                            </p>
+                            <h2 class="western"
+                                style="background:#ffffff;
+										   border-top:none;
+									   	   border-bottom:none;
+									       border-left:8px solid rgba(56, 114, 97);
+									       border-right:none;line-height:0.31in;
+									       padding:0in 0in 0in 0.19in;
+									       margin-top:0.29in;
+									       margin-bottom:0.16in;">
+									<span style="font-weight:normal;
+											 font-size:21px">
+										学术研究
+									</span>
+                            </h2>
+                            <p id="experience" style="line-height:150%;margin-bottom:0in;font-family:微软雅黑;">
+                                <br><span style="background:#ffffff;font-size: 20px">1.主持</span><br><br>
+                                <br> <br><span style="background:#ffffff;font-size: 16px">1.1 学术类</span><br>
+                                <br>[1]国家社科基金青年项目（管理学）：《新时代引导社会资本参与公共高等教育供给的分类发展及治理机制研究》课题编号：18CGL041；起止时间：2018年10月-2021年12月；研究状态：进行中（A级）
+                                <br>[2]教育部人文社科项目青年基金项目（教育学）：《高等教育多元化发展中公私联合体院校形成机理及治理机制研究》课题编号：16YJC880005；起止时间：2016年6月-2019年12月；研究状态：进行中（A级）
+                                <br>[3]成都科技局软科学项目一般项目：《校企合作集群创新网络及其协同建设研究——以成都八所“双一流”建设高校为例》课题编号：2017-RK00-00234-ZF；起止时间：2018年10月-2019年12月；研究状态：进行中
+                                <br>[4]西安外事学院横向委托项目：《高等教育领域混合所有制办学理论研究》课题编号：QF2018001；起止时间：2018年6月-2019年12月；研究状态：进行中
+                                <br>[5]中央高校基本科研业务经费项目交叉与新兴学科项目：《“知识—权力”视阈下引导社会资本参与高等教育产品供给的分类治理研究》课题编号：JBK1803004；起止时间：2017年12月-2018年12月，研究状态：进行中
+                                <br>[6]中央高校基本科研业务经费项目青年项目：《财经类高校大学生创新创业教育体系研究》课题编号：JBK1703112；起止时间：2017年4月-2017年12月，研究状态：结项
+                                <br>[7]福建省社科规划青年项目（博士研究项目）：《公共角色与民营化：大学公私属性问题研究》课题编号：2014C1030；起止时间：2014年9月-2017年7月；研究状态：结项
+                                <br>[8]陈涛：西安市社科规划重点项目：《我国民办高等教育公益化与社会化发展道路研究》课题编号：16IN03；起止时间：2016年10月-2018年10月；研究状态：结项（委托课题）
+                                <br> <br><span style="background:#ffffff;font-size: 16px">1.2教学类</span><br>
+                                <br>[1]2021年中央高校科研业务费项目高等财经教育研究项目：“四新”与“新财经”建设的发展趋势和战略选择：一个小本研究规划（项目编号：JKB21FG01）（进行中）
+                                <br>[2]2021年中央高校科研业务费项目西南财经大学新财经本科人人才培养专项调研项目：新财经背景下高阶跨学科人才培养现状、问题及对策研究（项目编号：XCJR202127）（进行中）
+                                <br>[3]2021年中央高校科研业务费项目国际教育交流与合作项目：“后疫情”时代教育国际交流挑战与应答
+                                ——一项教育人类命运共同体治理框架的提出（项目编号：JBK21GJ05）（已结项）
+                                <br>[4]2021年中央高校科研业务费项目西南财经大学教育教改专项：财经类高校劳动教育必修课程体系构建及实现路径研究（进行中）
+                                <br>[5] 2021年中央高校科研业务费项目西南财大教师教学发展项目：高校师生在线教学体验提升策略研究——基于教育系统四要素的分析（结项）
+                                <br>[6]2021年中央高校科研业务费项目西南财大国际交流研究专项：后疫情时代教育国际交流挑战与应答（结项）
+                                <br>[7] 2020年西南财大教师教学发展项目：我国第一代大学生课堂表现研究（已结项）；
+                                <br>[8]
+                                中央高校基本科研业务经费项目高等财经教育研究项目：《中国特色世界一流学科评价体系与方法支撑研究——以应用经济学为考察对象的多重逻辑作用模型研究》课题编号：JBK18FG01；起止时间：2018年8月-2019年8月；研究状态：已结项
+                                <br>[9]中央高校基本科研业务经费项目教育教学改革项目：《高校书院制本科人才培养模式创新研究》、《高校财经类学科形成性学绩（FOBE）综合教学改革研究》起止时间：2018-2019年（委托课题），研究状态：已结项
+                                <br>[10]中央高校基本科研业务经费项目教育教学改革项目：《基于学业成果评价（OBE）的财经类人才培养质量建设的实践与探索》课题编号：2017JG06；起止时间：2017年3月-2018年6月，研究状态：已结项
+                                <br><br>
+                                <br><span style="background:#ffffff;font-size: 20px">2.主研/参与</span><br><br>
+                                <br>[1]主研第一：国家社科基金一般项目（教育学）：《现代大学公私混合所有制研究》主持人：潘懋元教授；课题编号：BIA160122；起止时间：2016年7月-2019年12月；研究状态：进行中
+
+                            </p>
+                            <h2 class="western"
+                                style="background:#ffffff;
+										   border-top:none;
+									   	   border-bottom:none;
+									       border-left:8px solid rgba(56, 114, 97);
+									       border-right:none;line-height:0.31in;
+									       padding:0in 0in 0in 0.19in;
+									       margin-top:0.29in;
+									       margin-bottom:0.16in;">
+									<span style="font-weight:normal;
+											 font-size:21px">
+										学术会议
+									</span>
+                            </h2>
+                            <p id="experience" style="line-height:150%;margin-bottom:0in;font-family:微软雅黑;">
+                                <br>[1]2022年1月6日，参加厦门大学台湾研究院（线上）举办的“2022年新年学术沙龙：学术研究的思维、理论和方法”，并受邀做了《大型微观数据使用与理论本土化探究——以中国家庭第一代大学生研究为例》；
+                                <br>[2]2021年12月7日，参加由中国高等教育学高等教育管理分会举办的2021年学术年会，并受邀做了《防疫下的全球高等教育治理：影响、经验及中国策略》；
+                                <br>[3]2021年12月26日，参加《重庆高教研究》举办的首届青年编辑委员会高端论坛，并受聘为青年学术委员会副主任委员；
+                                <br>[4]2021年12月19日，参加上海师大举办的数字化转型与现代教育治理高端论坛，并受邀做了《人-机何以共生——数字化时代教育技术焦虑及其治理策略》；
+                                <br>[5]2021年12月17日，受北京师大未来教育研究中心邀请，在未来教育讲堂做了《走向再塑：第一代大学生家庭代际传递的双重效应》报告；
+                                <br>[6]2021年12月14日，参加中国矿业大学（徐州）举办的2021年“教育评价改革与高质量发展暨第三届教育经济与管理学科高层论坛”，并受邀做了《谁在保研经济中获益——基于学校再生产理论的解释》；
+                                <br>[7]2021年10月30-31日，参加在苏州大学（线上）举办的“2021年中国教育经济学年会”，并在“‘双减’政策背景下的中国课外补习专题组”做了《走向再塑：第一代大学生家庭代际传递的双重效应》报告；
+                                <br>[8]2021年11月23-24日，遴选受邀中国社科院（线上）举办的“2021栗林论坛”，并在“人口、婚姻和家庭”分论坛总做了《第一代大学生如何实现经济成功》报告；
+                                <br>[9]2021年7月16-18日，参加在西南大学举办的“2021年中国社会学年会”，并在“社会分层与流动”分论坛做了《；中国第一代大学生逆流而上的机制分析》报告；
+                                <br>[10]2021年4月5-7日，参加在厦门大学，由教育部人文社会科学重点研究基地厦门大学高等教育发展研究中心、联合国教科文组织亚太地区教育局（曼谷）、厦门大学教育研究院、厦门大学教师发展中心联合承办的厦门大学百年校庆系列国际论坛之“大学促进人类命运共同体的发展学术研讨会”。
+
+                                <br>[1]2021年11月9-10日，参加在南京师大（线上）举办的“2021年教育管理学年会”，并在分论坛与张艳博士做了《第一代女大学生教育回报率：婚姻匹配与家庭教育投入》报告
+                                <br>[2]2021年10月30-31日，参加在苏州大学（线上）举办的“2021年中国教育经济学年会”，并在“‘双减’政策背景下的中国课外补习专题组”做了《走向再塑：第一代大学生家庭代际传递的双重效应》报告。
+                                <br>[3]2021年11月23-24日，遴选受邀中国社科院（线上）举办的“2021栗林论坛”，并在“人口、婚姻和家庭”分论坛总做了《第一代大学生如何实现经济成功》报告。
+                                <br>[3]2021年7月16-18日，参加在西南大学举办的“2021年中国社会学年会”，并在“社会分层与流动”分论坛做了《平凡家庭何以塑人——中国第一代大学生逆流而上的机制分析》报告。
+                                <br>[4]2021年4月5-7日，参加在厦门大学，由教育部人文社会科学重点研究基地厦门大学高等教育发展研究中心、联合国教科文组织亚太地区教育局（曼谷）、厦门大学教育研究院、厦门大学教师发展中心联合承办的厦门大学百年校庆系列国际论坛之“大学促进人类命运共同体的发展学术研讨会”。
+                                <br>[5]2020年11月7-8日，参加在深圳南方科技大学，由中国教育经济学会举办的“2020年教育经济学学术年会”，并做专题报告《爱的边界：家庭教育焦虑是否会增加课外补习收入？》
+                                <br>[6]2019年10月18-20日，参加在长沙湖南师范大学，由中国教育学会教育经济学分化举办的“2019年教育经济学学术年会”，并做专题报告《中国家庭文化价值观与影子教育选择》
+                                <br>[5]2019年10月11-13日，参加在甘肃兰州大学，由中国高等教育学会主办的“2019高等教育国际论坛年会”
+                                <br>[6]2019年3月16日，参加在北京清华大学，由清华大学民生经济研究院举办的“改革开放40年与教育理念更新暨第二届全球教育50人论坛”
+                                <br>[7]2018年10月26-28日，参加在上海华东师范大学举办的“第四届全国教育实证研究论坛”，并做专场研究报告《基于教育理论的跨学科实证研究反思》
+                                <br>[8]2018年6月11日，参加在成都西南财经大学举办的“2018全球人才流动、移民和移民法学术研讨会”
+                                <br>[9]2018年5月30日，参加在成都西南财经大学举办的“《四川人才发展报告2018》发布会暨新时代国家中心城市人才发展论坛”
+                                <br>[10]2018年5月21日，参加在福建厦门厦门大学举办的“新时代高等教育研究与高等教育内涵式发展学术研讨会”
+                                <br>[11]2017年11月24日，参加在成都西南财经大学举办的“智库建设与社会发展研讨会”
+                                <br>[12]2017年7月3-5日，参加在北京举办的“2017年中国高教学会学术年会暨高教国际论坛”
+                                <br>[13]2016年10月26-28日，参加在广西南宁举办的“2016年中国高教学会学术年会暨高教国际论坛”，并在大会上荣获“第12届高等教育学优秀博士学位论文奖”，在博士生论坛上发言
+
+                            </p>
+<h2 class="western"
+                                style="background:#ffffff;
+										   border-top:none;
+									   	   border-bottom:none;
+									       border-left:8px solid rgba(56, 114, 97);
+									       border-right:none;line-height:0.31in;
+									       padding:0in 0in 0in 0.19in;
+									       margin-top:0.29in;
+									       margin-bottom:0.16in;">
+									<span style="font-weight:normal;
+											 font-size:21px">
+										学术服务
+									</span>
+                            </h2>
+                            <p id="experience" style="line-height:150%;margin-bottom:0in;font-family:微软雅黑;">
+                                <br>[1]全国民办教育研究联盟第二届理事
+<br>[2]中国教育经济学会理事
+<br>[3]四川省普通本科高等学校教学指导委员会 委员
+<br>[3]四川师范大学高等教育学专业校外硕士研究生导师
+<br>[4]西安外事学院七方教育研究院 特邀研究员
+<br>[5]中国劳动经济学会就业促进专业委员会 高级会员
+<br>[6]中国教育发展战略学会教育财政专业委员会 会员
+<br>[7]中国教育发展战略学会国际组织人才培养工作专业委员会 会员
+<br>[8]《北京大学教育评论》《华东师范大学学报（教科版）》《开放教育研究》《现代远程教育研究》《高校教育管理》《重庆高教研究》等期刊外审专家
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<!--End||content-->
+
+
+<!--Start||footer-->
+<div class="wrapper" style="background-color:#f5f5f5">
+    <div class="inner">
+        <div class="webcontact">
+            <p>友情链接：</p>
+            <div>
+                <div id="wp_nav_w97">
+
+                    <ul class="wp_nav"
+                        data-nav-config="{drop_v: &#39;down&#39;, drop_w: &#39;right&#39;, dir: &#39;y&#39;, opacity_main: &#39;1&#39;, opacity_sub: &#39;0.8&#39;, dWidth: &#39;0&#39;}">
+
+                        <li class="nav-item i1 ">
+                            <a href="https://www.swufe.edu.cn/" title="西南财经大学"
+                               target="_self"><span class="item-name">西南财经大学</span></a><i class="mark"
+                                                                                          style="opacity: 1;"></i>
+                        </li>
+                        <li>/</li>
+
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-    <!--End||content-->
+</div>
 
-
-	<!--Start||footer-->
-	<div class="wrapper" style="background-color:#f5f5f5">
-		<div class="inner">
-			<div class="webcontact">
-				<p>友情链接：</p>
-				<div>
-					<div id="wp_nav_w97">
-
-						<ul class="wp_nav"
-							data-nav-config="{drop_v: &#39;down&#39;, drop_w: &#39;right&#39;, dir: &#39;y&#39;, opacity_main: &#39;1&#39;, opacity_sub: &#39;0.8&#39;, dWidth: &#39;0&#39;}">
-
-							<li class="nav-item i1 ">
-								<a href="https://www.swufe.edu.cn/" title="西南财经大学"
-									target="_self"><span class="item-name">西南财经大学</span></a><i class="mark"
-									style="opacity: 1;"></i>
-							</li>
-							<li>/</li>
-
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="wrapper footer" id="footer" style="background-color:rgba(56, 114, 97)">
-		<div class="inner">
-			<div class="foot">
-				<div>
-					<div id="wp_news_w09">
-						<table width="100%" cellspacing="0" cellpadding="0" class="wp_article_list_table">
-							<tbody>
-								<tr>
-									<td>
-										<div>通讯地址：西南财经大学xxxx</div>
-										<div>办公电话：xxx-xxxxx Email：xxxxx@swufe.edu.cn</div>
-										<div></div>
-										<div>Power by singularity v0.1 ©2022</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--End||footer-->
+<div class="wrapper footer" id="footer" style="background-color:rgba(56, 114, 97)">
+    <div class="inner">
+        <div class="foot">
+            <div>
+                <div id="wp_news_w09">
+                    <table width="100%" cellspacing="0" cellpadding="0" class="wp_article_list_table">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div>通讯地址：西南财经大学xxxx</div>
+                                <div>办公电话：xxx-xxxxx Email：xxxxx@swufe.edu.cn</div>
+                                <div></div>
+                                <div>Power by singularity v0.1 ©2022</div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End||footer-->
 </body>
 
 </html>
