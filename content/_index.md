@@ -8,19 +8,20 @@ sections:
   - block: hero
     content:
       title: |
-        Wowchemy
-        Research Group
+        Dianshi (Moses) Li
       image:
         filename: welcome.jpg
       text: |
         <br>
-        
-        The **Wowchemy Research Group** has been a center of excellence for Artificial Intelligence research, teaching, and practice since its founding in 2016.
-  
+
+        Ph.D. student at the University of Macau focused on **computational social science**, **quantitative methodology**, **applied statistics**, **criminology**, and **AI for medicine**.
+
+        I work with the Centre for Empirical Legal Studies Laboratory to deliver data-driven insights for law and society. Explore my research, publications, and collaborations below.
+
   - block: collection
     content:
       title: Latest News
-      subtitle:
+      subtitle: "Updates from my research and collaborations"
       text:
       count: 5
       filters:
@@ -35,16 +36,21 @@ sections:
     design:
       view: card
       columns: '1'
-  
+
   - block: markdown
     content:
-      title:
+      title: Research Interests
       subtitle: ''
-      text:
+      text: |
+        - Computational Social Science
+        - Quantitative Methodology
+        - Applied Statistics
+        - Criminology
+        - AI for Medicine
     design:
       columns: '1'
       background:
-        image: 
+        image:
           filename: coders.jpg
           filters:
             brightness: 1
@@ -56,17 +62,15 @@ sections:
         padding: ['20px', '0', '20px', '0']
       css_class: fullscreen
 
-  - block: collection
+  - block: markdown
     content:
-      title: Latest Preprints
-      text: ""
-      count: 5
-      filters:
-        folders:
-          - publication
-        publication_type: 'article'
+      title: Publications
+      subtitle:
+      text: |
+        I maintain an up-to-date list of my articles on Google Scholar, including links to download or access each paper. You can browse the full list here: [Google Scholar Profile](https://scholar.google.com/citations?user=ZDgJsy8AAAAJ&hl=en&authuser=1).
+
+        {{% cta cta_link="./publication/" cta_text="View selected publications →" %}}
     design:
-      view: citation
       columns: '1'
 
   - block: markdown

@@ -1,77 +1,65 @@
 ---
 # Display name
-title: Nelson Bighetti
+title: Dianshi (Moses) Li
 
 # Full Name (for SEO)
-first_name: Nelson
-last_name: Bighetti
+first_name: Dianshi (Moses)
+last_name: Li
 
 # Is this the primary user of the site?
 superuser: true
 
 # Role/position
-role: Professor of Artificial Intelligence
+role: Ph.D. Student
 
 # Organizations/Affiliations
 organizations:
-  - name: Stanford University
-    url: ''
+  - name: Centre for Empirical Legal Studies Laboratory, Faculty of Law, University of Macau
+    url: 'https://www.um.edu.mo/'
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: Ph.D. student researching computational social science, quantitative methodology, criminology, and AI for medicine.
 
 interests:
-  - Artificial Intelligence
-  - Computational Linguistics
-  - Information Retrieval
+  - Computational Social Science
+  - Quantitative Methodology
+  - Applied Statistics
+  - Criminology
+  - AI for Medicine
 
 education:
   courses:
-    - course: PhD in Artificial Intelligence
-      institution: Stanford University
-      year: 2012
-    - course: MEng in Artificial Intelligence
-      institution: Massachusetts Institute of Technology
-      year: 2009
-    - course: BSc in Artificial Intelligence
-      institution: Massachusetts Institute of Technology
-      year: 2008
+    - course: Ph.D. (Criminal and Procedural Law)
+      institution: University of Macau
+      year: Present (Aug. 2023 – )
+    - course: B.Econ. (Economic Statistics)
+      institution: Southwestern University of Finance and Economics
+      year: 2022
 
 # Social/Academic Networking
-# For available icons, see: https://docs.hugoblox.com/getting-started/page-builder/#icons
-#   For an email link, use "fas" icon pack, "envelope" icon, and a link in the
-#   form "mailto:your-email@example.com" or "#contact" for contact widget.
 social:
   - icon: envelope
     icon_pack: fas
-    link: 'mailto:test@example.org'
-  - icon: twitter
-    icon_pack: fab
-    link: https://twitter.com/GeorgeCushen
+    link: 'mailto:dianshi2000@126.com'
+  - icon: envelope
+    icon_pack: fas
+    link: 'mailto:yc37228@um.edu.mo'
   - icon: google-scholar
     icon_pack: ai
-    link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
-  - icon: github
-    icon_pack: fab
-    link: https://github.com/gcushen
-# Link to a PDF of your resume/CV from the About widget.
-# To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
-# - icon: cv
-#   icon_pack: ai
-#   link: files/cv.pdf
+    link: https://scholar.google.com/citations?user=ZDgJsy8AAAAJ
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
 email: ''
 
 # Highlight the author in author lists? (true/false)
-highlight_name: false
+highlight_name: true
 
 # Organizational groups that you belong to (for People widget)
-#   Set this to `[]` or comment out if you are not using People widget.
 user_groups:
+  - Principal Investigators
   - Researchers
 ---
 
-Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+Dianshi (Moses) Li is a Ph.D. student in Criminal and Procedural Law at the University of Macau. He works with the Centre for Empirical Legal Studies Laboratory on data-driven research at the intersection of law, criminology, and artificial intelligence. His recent projects span computational social science, quantitative methodology, applied statistics, criminology, and AI for medicine.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
+He previously earned a B.Econ. in Economic Statistics from the Southwestern University of Finance and Economics and has served as a Teaching Research Assistant at the University of Macau and a Research Assistant at SWUFE. When he is not working with data, he enjoys exploring how empirical evidence can inform impactful policy and interdisciplinary scholarship.

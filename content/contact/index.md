@@ -9,33 +9,36 @@ sections:
     content:
       title: Contact
       text: |-
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tempus augue non tempor egestas. Proin nisl nunc, dignissim in accumsan dapibus, auctor ullamcorper neque. Quisque at elit felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aenean eget elementum odio. Cras interdum eget risus sit amet aliquet. In volutpat, nisl ut fringilla dignissim, arcu nisl suscipit ante, at accumsan sapien nisl eu eros.
-      email: test@example.org
-      phone: 888 888 88 88
+        Feel free to reach out for collaborations, speaking engagements, or media inquiries. Email is the best way to reach me.
+      email: dianshi2000@126.com
+      phone: ''
       address:
-        street: 450 Serra Mall
-        city: Stanford
-        region: CA
-        postcode: '94305'
-        country: United States
-        country_code: US
+        street: Faculty of Law, E32-1023
+        city: Taipa, Macau
+        region: Macau
+        postcode: ''
+        country: China
+        country_code: CN
       coordinates:
-        latitude: '37.4275'
-        longitude: '-122.1697'
-      directions: Enter Building 1 and take the stairs to Office 200 on Floor 2
+        latitude: ''
+        longitude: ''
+      directions: Centre for Empirical Legal Studies Laboratory, University of Macau
       office_hours:
-        - 'Monday 10:00 to 13:00'
-        - 'Wednesday 09:00 to 10:00'
-      appointment_url: 'https://calendly.com'
-      #contact_links:
-      #  - icon: comments
-      #    icon_pack: fas
-      #    name: Discuss on Forum
-      #    link: 'https://discourse.gohugo.io'
-    
+        - 'By appointment'
+      appointment_url: ''
+      contact_links:
+        - icon: envelope
+          icon_pack: fas
+          name: Secondary Email
+          link: 'mailto:yc37228@um.edu.mo'
+        - icon: google-scholar
+          icon_pack: ai
+          name: Google Scholar
+          link: 'https://scholar.google.com/citations?user=ZDgJsy8AAAAJ&hl=en&authuser=1'
+
       # Automatically link email and phone or display as text?
       autolink: true
-    
+
       # Email form provider
       form:
         provider: netlify
@@ -55,7 +58,7 @@ sections:
     design:
       columns: '1'
       background:
-        image: 
+        image:
           filename: contact.jpg
           filters:
             brightness: 1
